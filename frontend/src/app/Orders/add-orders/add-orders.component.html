@@ -1,0 +1,72 @@
+
+<div class="card-header py-3">
+    <h3 class="text-primary m-0 font-weight-bold">Create Order</h3>
+</div>
+
+<form #addO="ngForm" (ngSubmit)="addOrder()">
+
+    <div class="container-fluid">
+
+        <small class="text-danger">{{msg}}</small>
+
+        <div class="form-group">
+            <label for="name">order name:</label>
+            <div class='dropd'>
+                <select (change)="test($event)" [(ngModel)]="orders.name" name="slct">
+                    <option selected disabled>Choose an option</option>
+                    <option *ngFor="let product of products" [value]="product| json">
+                        {{product.productName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quanitity:</label>
+            <input type="quantity" class="form-control" placeholder="Enter Quanitity of the Product" name="quantity"
+                [(ngModel)]="orders.quantity" required #quantity="ngModel"
+                [class.is-invalid]="quantity.invalid && quantity.touched">
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="price" class="form-control" placeholder="Enter Price of the Product" name="price"
+                [(ngModel)]="orders.price" required #price="ngModel"
+                [class.is-invalid]="price.invalid && price.touched">
+        </div>
+
+        <div class="form-group">
+            <label for="deadline">Deadline .</label>
+            <input type="date" class="form-control" name="dob" [(ngModel)]="orders.deadline" required #deadline="ngModel"
+                [class.is-invalid]="deadline.invalid && deadline.touched">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Supplier</label>
+            <div class='drops'>
+
+                <select [(ngModel)]="orders.oSupplier" name="sname" >
+                    <option selected disabled>Select the supplier</option>
+                    <option  *ngFor="let supp of suppliersO" [value]="supp.sname">
+                        {{supp.sname}}
+                    </option>
+                </select>
+            </div>
+                
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="supname">Supplier:</label>
+            <div class='dropd'>
+                <select [(ngModel)]="orders.oSupplier" name="slcts">
+                    <option selected disabled>Choose an option</option>
+                    <option *ngFor="let supp of suppliersO" [value]="supp.sname">
+                        {{supp.sname}}
+                    </option>
+                </select>
+            </div>
+        </div> -->
+
+        <button [disabled]="addO.form.invalid" type="submit" class="btn btn-success">ADD</button>
+    </div>
+</form>

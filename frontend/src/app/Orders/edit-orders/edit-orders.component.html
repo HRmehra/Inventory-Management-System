@@ -1,0 +1,25 @@
+
+<form #edito="ngForm" (ngSubmit)="edit()">
+
+    <div class="form-group">
+        <label for="name">Order:</label>
+        <input type="name" class="form-control" placeholder="Enter name of the Product" name="name"
+            [(ngModel)]="order.name" required #name="ngModel"
+            [class.is-invalid]="name.invalid && name.touched">
+    </div>
+
+    <div class="form-group">
+        <label for="quantity">Quanitity:</label>
+        <input type="quantity" class="form-control" placeholder="Enter Quanitity of the order" name="quantity"
+            [(ngModel)]="order.quantity" required #quantity="ngModel"
+            [class.is-invalid]="quantity.invalid && quantity.touched">
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="price" class="form-control" placeholder="Enter Price of the order" name="price"
+            [(ngModel)]="order.price" required #price="ngModel" [class.is-invalid]="price.invalid && price.touched">
+    </div>
+
+    <button type="submit" class="btn btn-success">edit</button>
+</form>

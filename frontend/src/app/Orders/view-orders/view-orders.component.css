@@ -1,0 +1,53 @@
+table {
+    table-layout: fixed;
+    width: 96%;
+    border-collapse: collapse;
+    border: 2px solid rgb(201, 173, 201);
+    color: whitesmoke;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    align-items: center;
+    text-align: center;
+}
+.text-light {
+  color: #f8f9fa!important;
+  height: 60px;
+  margin-top: 33px;
+}
+  
+  thead th:nth-child(1) {
+    width: 15%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 10%;
+  }
+  
+  thead th:nth-child(3) {
+    width: 10%;
+  }
+  thead th:nth-child(4) {
+    width: 20%;
+  }
+  thead th:nth-child(5) {
+    width: 15%;
+  }
+  thead th:nth-child(6) {
+    width: 15%;
+  }
+  
+  th, td {
+    padding: 20px;
+  }
+
+ .center{
+    margin-left: auto;
+    margin-right: auto;
+ }
+ button{
+     margin-left: 80%;
+ }

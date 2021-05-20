@@ -1,0 +1,83 @@
+<h2>Sign Up </h2>
+
+<form *ngIf="!isSuccessful" #sf="ngForm" (ngSubmit)="sf.form.valid && onSubmit()">
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" placeholder="enter username" name="username" [(ngModel)]="user.username" required
+            #username="ngModel" />
+
+        <div class="alert-danger" *ngIf="username.errors && sf.submitted">
+            <div *ngIf="username.errors.required">Username is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" placeholder="enter email" name="email" [(ngModel)]="user.email" required email
+            #email="ngModel" />
+        <div class="alert-danger" *ngIf="email.errors && sf.submitted">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+                Email must be a valid email address
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name">Gender :</label>
+        <select class="form-control" [(ngModel)]="user.gender" name="gender" required #gender="ngModel">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="phoneno">Contact no. :</label>
+        <input type="phoneno" class="form-control" placeholder="Enter your contact no." name="phoneno"
+            [(ngModel)]="user.phoneno" required #phoneno="ngModel"
+            [class.is-invalid]="phoneno.invalid && phoneno.touched">
+    </div>
+
+    <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" name="dob" [(ngModel)]="user.dob" required #dob="ngModel"
+            [class.is-invalid]="dob.invalid && dob.touched">
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address :</label>
+        <input type="address" class="form-control" placeholder="Enter address" name="address" [(ngModel)]="user.address"
+            required #address="ngModel" [class.is-invalid]="address.invalid && address.touched">
+    </div>
+
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required
+            #password="ngModel" />
+        <div class="alert-danger" *ngIf="password.errors && sf.submitted">
+            <div *ngIf="password.errors.required">Password is required</div>
+        </div>
+    </div>
+
+    
+    <!-- <div class="form-group">
+        <label for="Cpwd">Confirm Password:</label>
+        <input type="password" class="form-control" placegolder="Confirm password" name="ConPassword"
+            #ConPassword="ngModel" required (ngModel)="user.password"
+            [class.is-invalid]="ConPassword.invalid && ConPassword.touched">
+        <small class="text-danger" [class.d-none]="(ConPassword.value == password.value)">not matched</small>
+    </div> -->
+
+    <div class="form-group">
+        <button class="btn btn-info">Sign Up</button>
+    </div>
+
+    <div class="alert alert-warning" *ngIf="sf.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+    </div>
+</form>
+
+<div class="alert alert-success" *ngIf="isSuccessful">
+    Your registration is successful!
+</div>

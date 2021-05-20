@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
+    <mat-toolbar>Inventorious </mat-toolbar>
+
+    <div *ngIf="isLoggedIn">
+      <hr class="nav-hr" />
+
+      <div class="sidebar-brand-text mx-3" *ngIf="isLoggedIn">Welcome, {{username }}</div>
+      <hr class="nav-hr" />
+    </div>
+    <mat-nav-list>
+
+      <a mat-list-item routerLinkActive="active" routerLink="/home">Home . <mat-icon>home</mat-icon></a>
+
+      <div *ngIf="isLoggedIn">
+        <a mat-list-item routerLinkActive="active" routerLink="/product">Products .<mat-icon>store
+          </mat-icon></a>
+        <a mat-list-item routerLinkActive="active" routerLink="/suppliers">Suppliers .<mat-icon>face
+          </mat-icon></a>
+        <a mat-list-item routerLinkActive="active" routerLink="/addOrder">Order .<mat-icon>shopping_cart
+          </mat-icon></a>
+        <a mat-list-item routerLinkActive="active" routerLink="/orders">Arriving .<mat-icon> departure_board</mat-icon>
+        </a>
+        <a mat-list-item routerLinkActive="active" routerLink="/profile">user .<mat-icon>account_circle
+          </mat-icon></a>
+
+        <div *ngFor="let role of currentuser.roles">
+          <div *ngIf="currentuser.role=='ROLE_ADMIN'">
+            <a mat-list-item routerLinkActive="active" routerLink="/admin">Admin board</a>
+          </div>
+        </div>
+
+        <a mat-list-item routerLinkActive="active" (click)="signOut()" routerLink="">Log Out .<mat-icon> call_end
+          </mat-icon></a>
+      </div>
+
+      <div *ngIf="isLoggedIn==false">
+        <a mat-list-item routerLinkActive="active" routerLink="/login">LogIn<mat-icon>account_circle</mat-icon></a>
+        <a mat-list-item routerLinkActive="active" routerLink="/register">Sign Up<mat-icon>account_circle</mat-icon></a>
+      </div>
+
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+       
+    
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

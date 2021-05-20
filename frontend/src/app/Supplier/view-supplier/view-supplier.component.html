@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <h3 class="text-light mb-4">Supplier Details :</h3>
+    <div class="card-body">
+      <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+        <table class="center" id="dataTable">
+          <thead class="colour">
+            <tr>
+              <!-- <th scope="col">S.No</th> -->
+              <th scope="col">Name</th>
+              <th scope="col">Contact No</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">address</th>
+              <th scope="col">city</th>
+              <th scope="col">Edit/Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let supplier of suppliers">
+              <!-- <th scope="row">{{supplier.sno}}</th> -->
+              <td>{{supplier.sname }}</td>
+              <td>{{ supplier.contactNo}}</td>
+              <td>{{ supplier.email}}</td>
+              <td>{{ supplier.address}}</td>
+              <td>{{ supplier.city}}</td>
+  
+              <td><a routerLinkActive="Active" routerLink="/edits/{{supplier.sno}}"><i class="fa fa-edit"
+                    style="font-size:25px"></i> </a>
+                <i (click)="delete(supplier.sno)" class="fa fa-trash" style="font-size:25px;color: red;"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-info" routerLinkActive="active" [routerLink]="['/addSup']">Add a supplier</button>
+    </div>
+  </div>

@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <h3 class="text-light mb-4">Create Product Order</h3>
+        <div class="card-body">
+            <form #addp="ngForm" (ngSubmit)="add()">
+                <small class="text-danger">{{msg}}</small>
+
+                <div class="form-group">
+                    <label for="productName">Product name:</label>
+                    <input type="productName" class="form-control" placeholder="Enter name of the Product"
+                        name="productName" [(ngModel)]="product.productName" required #productName="ngModel"
+                        [class.is-invalid]="productName.invalid && productName.touched">
+                </div>
+
+                <div class="form-group">
+                    <label for="brand">Product Brand:</label>
+                    <input type="brand" class="form-control" placeholder="Enter Brand of the Product" name="brand"
+                        [(ngModel)]="product.brand" required #brand="ngModel"
+                        [class.is-invalid]="brand.invalid && brand.touched">
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quanitity:</label>
+                    <input type="quantity" class="form-control" placeholder="Enter Quanitity of the Product"
+                        name="quantity" [(ngModel)]="product.quantity" required
+                        pattern="^(?:[1-9][0-9]{3}|[1-9][0-9]{2}|[1-9][0-9]|[1-9])$" #quantity="ngModel"
+                        [class.is-invalid]="quantity.invalid && quantity.touched">
+                    <div *ngIf="quantity.touched && quantity.dirty && quantity.invalid" class="alert alert-primary">
+                        Please Enter The Valid Quantity range.1-999
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Bprice">Buying Price:</label>
+                    <input type="Bprice" class="form-control" placeholder="Enter buying Price of the Product"
+                        name="Bprice" [(ngModel)]="product.buyingPrice" required
+                        pattern="^(?:[1-9][0-9]{3}|[1-9][0-9]{2}|[1-9][0-9]|[1-9])$" #Bprice="ngModel"
+                        [class.is-invalid]="Bprice.invalid && Bprice.touched">
+                    <div *ngIf="Bprice.touched && Bprice.dirty && Bprice.invalid" class="alert alert-primary">
+                        Please Enter in numbers
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Sprice">Retail Price:</label>
+                    <input type="Sprice" class="form-control" placeholder="Enter Selling Price of the Product"
+                        name="Sprice" [(ngModel)]="product.sellingPrice" required
+                        pattern="^(?:[1-9][0-9]{3}|[1-9][0-9]{2}|[1-9][0-9]|[1-9])$" #Sprice="ngModel"
+                        [class.is-invalid]="Sprice.invalid && Sprice.touched">
+                    <div *ngIf="Sprice.touched && Sprice.dirty && Sprice.invalid" class="alert alert-primary">
+                        Please Enter in numbers
+                    </div>
+                </div>
+
+                <button [disabled]="addp.form.invalid" type="submit" class="btn btn-success">ADD</button>
+            </form>
+        </div>
+</div>

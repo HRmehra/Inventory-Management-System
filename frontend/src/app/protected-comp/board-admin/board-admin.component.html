@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <h3 class="text-light mb-4">Users Details</h3>
+
+  <div class="card-body">
+    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+
+      <table class="center" id="dataTable">
+        <thead class="colour">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Address</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody #cs>
+          <tr *ngFor="let user of users">
+            <td>{{ user.username }}</td>
+            <td>{{ user.email}}</td>
+            <td>{{ user.gender}}</td>
+            <td>{{ user.phoneno }}</td>
+            <td>{{ user.address }}</td>
+            <td>
+              <i (click)="delete(user.id)" class="fa fa-trash" style="font-size:25px;color: red;"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+</div>
